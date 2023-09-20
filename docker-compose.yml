@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: react-template/react:v1
+    image: template/react:v1
     ports:
       - "3000:3000"
     restart: unless-stopped
