@@ -1,5 +1,8 @@
 import Routes from "./Routes";
 import { BrowserRouter } from "react-router-dom";
+import { store } from './store'
+import { Provider } from 'react-redux'
+
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
   // See documentation for <Routes /> for more info
@@ -8,7 +11,9 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Routes pages={pages} />
+      <Provider store={store}>
+        <Routes pages={pages} />
+      </Provider>
     </BrowserRouter>
   );
 }
