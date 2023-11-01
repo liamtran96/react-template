@@ -1,4 +1,4 @@
-import { Routes as ReactRouterRoutes, Route } from "react-router-dom";
+import { Routes as ReactRouterRoutes, Route } from 'react-router-dom';
 
 /**
  * File-based routing.
@@ -14,15 +14,14 @@ import { Routes as ReactRouterRoutes, Route } from "react-router-dom";
  *
  * @return {Routes} `<Routes/>` from React Router, with a `<Route/>` for each file in `pages`
  */
-// eslint-disable-next-line react/prop-types
 export default function Routes({ pages }) {
   const routes = useRoutes(pages);
-  console.log("routes", routes);
+  console.log('routes', routes);
   const routeComponents = routes.map(({ path, component: Component }) => (
     <Route key={path} path={path} element={<Component />} />
   ));
 
-  const NotFound = routes.find(({ path }) => path === "/notFound").component;
+  const NotFound = routes.find(({ path }) => path === '/notFound').component;
 
   return (
     <ReactRouterRoutes>
@@ -36,12 +35,12 @@ function useRoutes(pages) {
   const routes = Object.keys(pages)
     .map((key) => {
       let path = key
-        .replace("./pages", "")
-        .replace(/\.(t|j)sx?$/, "")
+        .replace('./pages', '')
+        .replace(/\.(t|j)sx?$/, '')
         /**
          * Replace /index with /
          */
-        .replace(/\/index$/i, "/")
+        .replace(/\/index$/i, '/')
         /**
          * Only lowercase the first letter. This allows the developer to use camelCase
          * dynamic paths while ensuring their standard routes are normalized to lowercase.
@@ -52,7 +51,7 @@ function useRoutes(pages) {
          */
         .replace(/\[(?:[.]{3})?(\w+?)\]/g, (_match, param) => `:${param}`);
 
-      if (path.endsWith("/") && path !== "/") {
+      if (path.endsWith('/') && path !== '/') {
         path = path.substring(0, path.length - 1);
       }
 

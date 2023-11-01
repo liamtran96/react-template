@@ -1,3 +1,5 @@
 export default function PageName() {
-  return <div> Index ne</div>;
+  return (<h1 className="text-3xl font-bold underline bg-black">
+    Hello world!
+  </h1>);
 }
